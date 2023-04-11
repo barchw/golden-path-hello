@@ -1,0 +1,25 @@
+global:
+  domain: bc-int.goatz.shoot.canary.k8s-hana.ondemand.com
+  imagePullSecret:
+    {}
+srv:
+  bindings:
+    {}
+  image:
+    repository: docker.io/i566483/cap
+    tag: 1.0.0
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+  resources:
+    limits:
+      ephemeral-storage: 1G
+      memory: 1G
+    requests:
+      ephemeral-storage: 1G
+      cpu: 1000m
+      memory: 1G
+  health:
+    liveness:
+      path: /
+    readiness:
+      path: /
